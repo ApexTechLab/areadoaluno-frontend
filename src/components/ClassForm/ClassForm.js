@@ -50,7 +50,7 @@ class ClassForm extends Component {
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Row>
-              <Form.Group as={Col} md="4" controlId="validationFormik01">
+              <Form.Group as={Col} md="12" controlId="validationFormik01">
                 <Form.Label>Nome:</Form.Label>
                 <Form.Control
                   type="text"
@@ -61,7 +61,7 @@ class ClassForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group as={Col} md="4" controlId="validationFormik02">
+              <Form.Group as={Col} md="12" controlId="validationFormik02">
                 <Form.Label>Código:</Form.Label>
                 <Form.Control
                   type="text"
@@ -72,7 +72,7 @@ class ClassForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group as={Col} md="4" controlId="validationFormik02">
+              <Form.Group as={Col} md="12" controlId="validationFormik02">
                 <Form.Label>Data inicial:</Form.Label>
                 <Form.Control
                   type="text"
@@ -83,7 +83,7 @@ class ClassForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group as={Col} md="4" controlId="validationFormik02">
+              <Form.Group as={Col} md="12" controlId="validationFormik02">
                 <Form.Label>Data final:</Form.Label>
                 <Form.Control
                   type="text"
@@ -94,7 +94,7 @@ class ClassForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group as={Col} md="4" controlId="validationFormik02">
+              <Form.Group as={Col} md="12" controlId="validationFormik02">
                 <Form.Label>Nome professor:</Form.Label>
                 <Form.Control
                   type="text"

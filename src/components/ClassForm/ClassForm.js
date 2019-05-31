@@ -18,7 +18,7 @@ class ClassForm extends Component {
 
   render() {
     const schema = yup.object().shape({
-      name: yup.string().required(),
+      name: yup.string().required().min(3).max(5),
       code: yup.string().required(),
       startDate: yup.string().required(),
       endDate: yup.string().required(),

@@ -53,7 +53,7 @@ const calssObj = [{
         birthDate: '1559088058',
         phone: '47999087621',
         email: 'joao_hotequil@gmail.com',
-        classes: [3,2]
+        classes: [3]
     }]
 }
 ]
@@ -68,7 +68,8 @@ class ClassTable extends Component {
     
         this.state = {
           show: false,
-          clazz: 0
+          clazz: 0,
+          studentSelected: [0]
         };
     }
     
@@ -77,8 +78,8 @@ class ClassTable extends Component {
     }
 
     handleShow(clazz) {
-    this.setState({ show: true });
-    //this.setState({ clazz: clazz });
+    this.setState({ show: true,
+                    studentSelected: clazz -1 });    
     }
 
 
@@ -86,13 +87,13 @@ class ClassTable extends Component {
     render() {
         const tableRows = calssObj.map(clazz => {
             return (
-                <tr>
+                <tr key={clazz.id}>
                     <th>{clazz.name}</th>
                     <th>{clazz.code}</th>
                     <th>{clazz.startDate}</th>
                     <th>{clazz.endDate}</th>
                     <th>
-                    <button type="button" class="btn" onClick={this.handleShow} >Alunos</button>
+                    <button type="button" className="btn" onClick={this.handleShow.bind(this, clazz.id)} >Alunos {clazz.id}</button>
                     </th>
                 </tr>
             )
@@ -100,7 +101,7 @@ class ClassTable extends Component {
        
         return (
             <div>
-                <table class="table " border='1'>
+                <table className="table " border='1'>
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>
@@ -113,15 +114,12 @@ class ClassTable extends Component {
                         {tableRows}
                     </tbody>
                 </table>
-        <Button variant="primary" onClick={this.handleShow}>
-          Launch demo modal
-        </Button>
         <Modal show={this.state.show} onHide={this.handleClose} size="lg">
           <Modal.Header closeButton>
             <Modal.Title>Lista de Alunos</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <StudentsTable students={calssObj[2].students} />
+              <StudentsTable students={calssObj[this.state.studentSelected].students} />
             </Modal.Body>
         </Modal>
 

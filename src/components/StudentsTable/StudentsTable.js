@@ -13,10 +13,10 @@ class StudentsTable extends Component {
                 
                 <tr key={students.id}>
                     <th>{students.name}</th>
-                    <th>{students.phone}</th>
+                    <th format="#### #### ####">{students.phone}</th>
                     <th>{students.email}</th>
                     <th>
-                    <button type="button" className="btn btn-dark">Detalhes</button>
+                    <button type="button" className="btn">Detalhes</button>
                     </th>
                 </tr>
 
@@ -27,7 +27,7 @@ class StudentsTable extends Component {
         return (
         <div>
 
-        <table className="table table-dark" border='1'>
+        <table className="table" border='1'>
         <thead>
           <tr>
             <th scope="col">Nome</th>

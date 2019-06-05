@@ -86,12 +86,24 @@ class ClassTable extends Component {
 
     render() {
         const tableRows = calssObj.map(clazz => {
+            const new_starDate =   new Intl.DateTimeFormat('en-GB', { 
+                year: 'numeric', 
+                month: '2-digit', 
+                day: '2-digit' 
+            }).format(clazz.startDate);
+
+            const new_endDate =   new Intl.DateTimeFormat('en-GB', { 
+                year: 'numeric', 
+                month: '2-digit', 
+                day: '2-digit' 
+            }).format(clazz.endtDate);
+
             return (
                 <tr key={clazz.id}>
                     <th>{clazz.name}</th>
                     <th>{clazz.code}</th>
-                    <th>{clazz.startDate}</th>
-                    <th>{clazz.endDate}</th>
+                    <th>{new_starDate}</th>
+                    <th>{new_endDate}</th>
                     <th>
                     <button type="button" className="btn" onClick={this.handleShow.bind(this, clazz.id)} >Alunos {clazz.id}</button>
                     </th>

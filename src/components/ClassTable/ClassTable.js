@@ -98,6 +98,7 @@ class ClassTable extends Component {
                 day: '2-digit' 
             }).format(clazz.endtDate);
 
+            
             return (
                 <tr key={clazz.id}>
                     <th>{clazz.name}</th>

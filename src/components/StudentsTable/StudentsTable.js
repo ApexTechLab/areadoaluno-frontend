@@ -8,12 +8,13 @@ class StudentsTable extends Component {
 
     render() {
         const tableRows = this.props.students.map(students => {
-            
+        
+
             return (
                 
                 <tr key={students.id}>
                     <th>{students.name}</th>
-                    <th format="#### #### ####">{students.phone}</th>
+                    <th >{students.phone}</th>
                     <th>{students.email}</th>
                     <th>
                     <button type="button" className="btn">Detalhes</button>

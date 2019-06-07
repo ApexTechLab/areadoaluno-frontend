@@ -22,7 +22,7 @@ class StudentForm extends Component {
     const schema = yup.object().shape({
       name: yup.string().required().min(3),
       email: yup.string().required().email(),
-      birthDate: yup.date().required(),
+      birthDate: yup.string().required(),
       phone: yup.string().required(),
       cpf: yup.string().required(),
       classes: yup.array()
@@ -43,7 +43,7 @@ class StudentForm extends Component {
           email: '',
           phone: '',
           cpf: '',
-          birthDate: undefined,
+          birthDate: '',
           classes: []
         }}>
 
@@ -65,6 +65,7 @@ class StudentForm extends Component {
                 <Form.Control
                   type="text"
                   name="name"
+                  placeholder="Coloque o nome completo."
                   autoFocus={true}
                   value={values.name}
                   onChange={handleChange}
@@ -73,10 +74,11 @@ class StudentForm extends Component {
               </Form.Group>
 
               <Form.Group as={Col} md="6" controlId="validationFormik01">
-                <Form.Label>Email:</Form.Label>
+                <Form.Label>E-mail:</Form.Label>
                 <Form.Control
                   type="email"
                   name="email"
+                  placeholder="Coloque o e-mail."
                   value={values.email}
                   onChange={handleChange}
                   isInvalid={touched.email && errors.email}
@@ -92,7 +94,7 @@ class StudentForm extends Component {
                     {...field}
                     mask={[
                       "(",
-                      /[1-9]/,
+                      /[0-9]/,
                       /\d/,
                       ")",
                       " ",
@@ -111,8 +113,9 @@ class StudentForm extends Component {
                     id="phone"
                     type="text"
                     onChange={handleChange}
+                    placeholder="Coloque o telefone móvel"
                     value={values.phone}
-                      onBlur={handleBlur}
+                    onBlur={handleBlur}
                     className={
                       errors.phone && touched.phone
                         ? "text-input form-control is-invalid error"
@@ -131,7 +134,7 @@ class StudentForm extends Component {
                   <MaskedInput
                     {...field}
                     mask={[
-                      /[1-9]/,
+                      /[0-9]/,
                       /\d/,
                       /\d/,
                       ".",
@@ -150,6 +153,7 @@ class StudentForm extends Component {
                     type="text"
                     value={values.cpf}
                     onChange={handleChange}
+                    placeholder="Coloque o CPF."
                     onBlur={handleBlur}
                     className={
                       errors.cpf && touched.cpf
@@ -171,6 +175,7 @@ class StudentForm extends Component {
                     mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
                     id="birthDate"
                     type="text"
+                    placeholder="Coloque a data de nascimento."
                     value={values.birthDate}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -187,6 +192,7 @@ class StudentForm extends Component {
               <Form.Group as={Col} md="6" controlId="validationFormik01">
                 <Form.Label>Seleciona a turma: </Form.Label>
                 <Select
+                  placeholder="Selecione uma ou mais turma."
                   id="classes"
                   name="classes"
                   options={options}
@@ -194,11 +200,6 @@ class StudentForm extends Component {
                   onChange={(option) => setFieldValue('classes', option)}
                   onBlur={handleBlur}
                   value={values.classes}
-                  className={
-                    errors.classes && touched.classes
-                      ? "is-invalid error"
-                    : ""
-                  }
                 />
               </Form.Group>
 
@@ -214,27 +215,3 @@ class StudentForm extends Component {
 }
 
 export default StudentForm;
-
-// <Form.Group as={Col} md="2" controlId="validationFormik01">
-//<Form.La/bel>Data de Nascimento:</Form.Label><br />
-//<DatePicker 
-//  selected={values.birthDate}
-//  className={"text-input form-control"}
-//  className={
-//    errors.birthDate && touched.birthDate
-//      ? "text-input form-control is-invalid error"
-//    : "text-input form-control"
-//  }
-//  customInput={
-//    <MaskedTextInput
-//      type="text"
-//      mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
-//    />
-//  }
-//  onChange={(e) => {
-//    setFieldValue ('birthDate', e);
-//      setFieldTouched('birthDate');
-//    }}
-//  isInvalid={touched.birthDate && errors.birthDate}
-///>
-//</Form.Group>

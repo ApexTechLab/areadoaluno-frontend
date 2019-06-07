@@ -5,7 +5,6 @@ import { Form, Col, InputGroup, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import pt from 'date-fns/locale/pt';
 
-
 class ClassForm extends Component {
 
   constructor(props) {
@@ -119,7 +118,7 @@ class ClassForm extends Component {
                   isInvalid={touched.teacherName && errors.teacherName}
                 />
               </Form.Group>
-              <Button type="submit">Submit form</Button>
+              <Button type="submit">Enviar</Button>
             </Form.Row>
           </Form>
         )}

@@ -22,8 +22,8 @@ class StudentForm extends Component {
       name: yup.string().required().min(3),
       email: yup.string().required().email(),
       birthDate: yup.date().required(),
-      phone: yup.number().required(),
-      cpf: yup.number().required(),
+      phone: yup.string().required(),
+      cpf: yup.string().required(),
       classes: yup.array()
     });
 
@@ -34,7 +34,6 @@ class StudentForm extends Component {
     ];
     
     return (
-      
       <Formik
         validationSchema={schema}
         onSubmit={this.alerta.bind(this)}
@@ -43,8 +42,8 @@ class StudentForm extends Component {
           email: '',
           phone: '',
           cpf: '',
-          classes: [],
-          birthDate: undefined
+          birthDate: undefined,
+          classes: []
         }}>
 
         {({
@@ -60,8 +59,8 @@ class StudentForm extends Component {
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Row>
-              <Form.Group as={Col} md="12" controlId="validationFormik01">
-                <Form.Label>Nome:</Form.Label>
+              <Form.Group as={Col} md="6" controlId="validationFormik01">
+                <Form.Label>Nome Completo:</Form.Label>
                 <Form.Control
                   type="text"
                   name="name"
@@ -71,7 +70,7 @@ class StudentForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group as={Col} md="12" controlId="validationFormik01">
+              <Form.Group as={Col} md="6" controlId="validationFormik01">
                 <Form.Label>Email:</Form.Label>
                 <Form.Control
                   type="email"
@@ -82,31 +81,98 @@ class StudentForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group as={Col} md="12" controlId="validationFormik01">
-                <Form.Label>Telefone:</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="phone"
-                  value={values.phone}
-                  onChange={handleChange}
-                  isInvalid={touched.phone && errors.phone}
-                />
+              <Form.Group as={Col} md="6" controlId="validationFormik01">
+                <Form.Label>Telefone Móvel:</Form.Label>
+                <Field
+                name="phone"
+                render={({ field }) => (
+                  <MaskedInput
+                    {...field}
+                    mask={[
+                      "(",
+                      /[1-9]/,
+                      /\d/,
+                      ")",
+                      " ",
+                      /\d/,
+                      " ",
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      "-",
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      /\d/
+                    ]}
+                    id="phone"
+                    type="text"
+                    onChange={handleChange}
+                    value={values.phone}
+                    onBlur={handleBlur}
+                    className={
+                      errors.phone && touched.phone
+                        ? "text-input form-control error"
+                      : "text-input form-control"
+                    }
+                  />
+                )}
+              />
               </Form.Group>
-
-              <Field name='phone' > {({ field }) => ( <MaskedInput mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]} {...field} placeholder='Telefone' className="form-control" /> )} </Field>
-
-              <Form.Group as={Col} md="12" controlId="validationFormik01">
+             
+              <Form.Group as={Col} md="6" controlId="validationFormik01">
                 <Form.Label>CPF:</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="cpf"
-                  value={values.cpf}
-                  onChange={handleChange}
-                  isInvalid={touched.cpf && errors.cpf}
-                />
+                <Field
+                name="cpf"
+                render={({ field }) => (
+                  <MaskedInput
+                    {...field}
+                    mask={[
+                      /[1-9]/,
+                      /\d/,
+                      /\d/,
+                      ".",
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      ".",
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      "-",
+                      /\d/,
+                      /\d/
+                    ]}
+                    id="cpf"
+                    type="text"
+                    value={values.cpf}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={
+                      errors.cpf && touched.cpf
+                        ? "text-input form-control error"
+                      : "text-input form-control"
+                    }
+                  />
+                )}
+              />
               </Form.Group>
 
-              <Form.Group as={Col} md="12" controlId="validationFormik01">
+              <Form.Group as={Col} md="2" controlId="validationFormik01">
+                <Form.Label>Data de Nascimento:</Form.Label><br />
+                  <DatePicker
+                    selected={values.birthDate}
+                    className={"text-input form-control"}
+                    onChange={(e) => {
+                      setFieldValue ('birthDate', e);
+                        setFieldTouched('birthDate');
+                      }}
+                    isInvalid={touched.birthDate && errors.birthDate}
+                  />
+              </Form.Group>
+
+              <Form.Group as={Col} md="10" controlId="validationFormik01">
                 <Form.Label>Seleciona a turma: </Form.Label>
                 <Select
                   id="classes"
@@ -120,19 +186,6 @@ class StudentForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group as={Col} md="12" controlId="validationFormik01">
-                <Form.Label>Data de Nascimento:</Form.Label><br />
-                <DatePicker
-                  inline
-                  selected={values.birthDate}
-                  onChange={(e) => {
-                    setFieldValue ('birthDate', e);
-                      setFieldTouched('birthDate');
-                    }}
-                  isInvalid={touched.birthDate && errors.birthDate}
-                />
-              </Form.Group>
-
               <Button type="submit">Enviar Cadastro</Button>
 
             </Form.Row>
@@ -143,4 +196,5 @@ class StudentForm extends Component {
   }
 
 }
+
 export default StudentForm;

@@ -35,180 +35,182 @@ class StudentForm extends Component {
     ];
     
     return (
-      <Formik
-        validationSchema={schema}
-        onSubmit={this.alerta.bind(this)}
-        initialValues={{
-          name: '',
-          email: '',
-          phone: '',
-          cpf: '',
-          birthDate: '',
-          classes: []
-        }}>
+      <div className={"form"}>
+        <Formik
+          validationSchema={schema}
+          onSubmit={this.alerta.bind(this)}
+          initialValues={{
+            name: '',
+            email: '',
+            phone: '',
+            cpf: '',
+            birthDate: '',
+            classes: []
+          }}>
 
-        {({
-          handleSubmit,
-          handleChange,
-          handleBlur,
-          values,
-          touched,
-          isValid,
-          errors,
-          setFieldValue,
-          setFieldTouched
-        }) => (
-          <Form noValidate onSubmit={handleSubmit}>
-            <Form.Row>
-              <Form.Group as={Col} md="6" controlId="validationFormik01">
-                <Form.Label>Nome Completo:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  placeholder="Coloque o nome completo."
-                  autoFocus={true}
-                  value={values.name}
-                  onChange={handleChange}
-                  isInvalid={touched.name && errors.name}
-                />
-              </Form.Group>
-
-              <Form.Group as={Col} md="6" controlId="validationFormik01">
-                <Form.Label>E-mail:</Form.Label>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  placeholder="Coloque o e-mail."
-                  value={values.email}
-                  onChange={handleChange}
-                  isInvalid={touched.email && errors.email}
-                />
-              </Form.Group>
-
-              <Form.Group as={Col} md="6" controlId="validationFormik01">
-                <Form.Label>Telefone Móvel:</Form.Label>
-                <Field
-                name="phone"
-                render={({ field }) => (
-                  <MaskedInput
-                    {...field}
-                    mask={[
-                      "(",
-                      /[0-9]/,
-                      /\d/,
-                      ")",
-                      " ",
-                      /\d/,
-                      " ",
-                      /\d/,
-                      /\d/,
-                      /\d/,
-                      /\d/,
-                      "-",
-                      /\d/,
-                      /\d/,
-                      /\d/,
-                      /\d/
-                    ]}
-                    id="phone"
+          {({
+            handleSubmit,
+            handleChange,
+            handleBlur,
+            values,
+            touched,
+            isValid,
+            errors,
+            setFieldValue,
+            setFieldTouched
+          }) => (
+            <Form noValidate onSubmit={handleSubmit}>
+              <Form.Row>
+                <Form.Group as={Col} md="6" controlId="validationFormik01">
+                  <Form.Label>Nome Completo:</Form.Label>
+                  <Form.Control
                     type="text"
+                    name="name"
+                    placeholder="Coloque o nome completo."
+                    autoFocus={true}
+                    value={values.name}
                     onChange={handleChange}
-                    placeholder="Coloque o telefone móvel"
-                    value={values.phone}
-                    onBlur={handleBlur}
-                    className={
-                      errors.phone && touched.phone
-                        ? "text-input form-control is-invalid error"
-                      : "text-input form-control"
-                    }
+                    isInvalid={touched.name && errors.name}
                   />
-                )}
-              />
-              </Form.Group>
-             
-              <Form.Group as={Col} md="6" controlId="validationFormik01">
-                <Form.Label>CPF:</Form.Label>
-                <Field
-                name="cpf"
-                render={({ field }) => (
-                  <MaskedInput
-                    {...field}
-                    mask={[
-                      /[0-9]/,
-                      /\d/,
-                      /\d/,
-                      ".",
-                      /\d/,
-                      /\d/,
-                      /\d/,
-                      ".",
-                      /\d/,
-                      /\d/,
-                      /\d/,
-                      "-",
-                      /\d/,
-                      /\d/
-                    ]}
-                    id="cpf"
-                    type="text"
-                    value={values.cpf}
-                    onChange={handleChange}
-                    placeholder="Coloque o CPF."
-                    onBlur={handleBlur}
-                    className={
-                      errors.cpf && touched.cpf
-                        ? "text-input form-control is-invalid error"
-                      : "text-input form-control"
-                    }
-                  />
-                )}
-              />
-              </Form.Group>
+                </Form.Group>
 
-              <Form.Group as={Col} md="6" controlId="validationFormik01">
-                <Form.Label>Data de Nascimento:</Form.Label>
-                <Field
-                name="birthDate"
-                render={({ field }) => (
-                  <MaskedTextInput
-                    {...field}
-                    mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
-                    id="birthDate"
-                    type="text"
-                    placeholder="Coloque a data de nascimento."
-                    value={values.birthDate}
+                <Form.Group as={Col} md="6" controlId="validationFormik01">
+                  <Form.Label>E-mail:</Form.Label>
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    placeholder="Coloque o e-mail."
+                    value={values.email}
                     onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={
-                      errors.birthDate && touched.birthDate
-                        ? "text-input form-control is-invalid error"
-                      : "text-input form-control"
-                    }
+                    isInvalid={touched.email && errors.email}
                   />
-                )}
-              />
-              </Form.Group>
+                </Form.Group>
 
-              <Form.Group as={Col} md="6" controlId="validationFormik01">
-                <Form.Label>Seleciona a turma: </Form.Label>
-                <Select
-                  placeholder="Selecione uma ou mais turma."
-                  id="classes"
-                  name="classes"
-                  options={options}
-                  isMulti={true}
-                  onChange={(option) => setFieldValue('classes', option)}
-                  onBlur={handleBlur}
-                  value={values.classes}
+                <Form.Group as={Col} md="6" controlId="validationFormik01">
+                  <Form.Label>Telefone Móvel:</Form.Label>
+                  <Field
+                  name="phone"
+                  render={({ field }) => (
+                    <MaskedInput
+                      {...field}
+                      mask={[
+                        "(",
+                        /[0-9]/,
+                        /\d/,
+                        ")",
+                        " ",
+                        /\d/,
+                        " ",
+                        /\d/,
+                        /\d/,
+                        /\d/,
+                        /\d/,
+                        "-",
+                        /\d/,
+                        /\d/,
+                        /\d/,
+                        /\d/
+                      ]}
+                      id="phone"
+                      type="text"
+                      onChange={handleChange}
+                      placeholder="Coloque o telefone móvel"
+                      value={values.phone}
+                      onBlur={handleBlur}
+                      className={
+                        errors.phone && touched.phone
+                          ? "text-input form-control is-invalid error"
+                        : "text-input form-control"
+                      }
+                    />
+                  )}
                 />
-              </Form.Group>
+                </Form.Group>
+              
+                <Form.Group as={Col} md="6" controlId="validationFormik01">
+                  <Form.Label>CPF:</Form.Label>
+                  <Field
+                  name="cpf"
+                  render={({ field }) => (
+                    <MaskedInput
+                      {...field}
+                      mask={[
+                        /[0-9]/,
+                        /\d/,
+                        /\d/,
+                        ".",
+                        /\d/,
+                        /\d/,
+                        /\d/,
+                        ".",
+                        /\d/,
+                        /\d/,
+                        /\d/,
+                        "-",
+                        /\d/,
+                        /\d/
+                      ]}
+                      id="cpf"
+                      type="text"
+                      value={values.cpf}
+                      onChange={handleChange}
+                      placeholder="Coloque o CPF."
+                      onBlur={handleBlur}
+                      className={
+                        errors.cpf && touched.cpf
+                          ? "text-input form-control is-invalid error"
+                        : "text-input form-control"
+                      }
+                    />
+                  )}
+                />
+                </Form.Group>
 
-              <Button type="submit">Enviar Cadastro</Button>
+                <Form.Group as={Col} md="6" controlId="validationFormik01">
+                  <Form.Label>Data de Nascimento:</Form.Label>
+                  <Field
+                  name="birthDate"
+                  render={({ field }) => (
+                    <MaskedTextInput
+                      {...field}
+                      mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
+                      id="birthDate"
+                      type="text"
+                      placeholder="Coloque a data de nascimento."
+                      value={values.birthDate}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.birthDate && touched.birthDate
+                          ? "text-input form-control is-invalid error"
+                        : "text-input form-control"
+                      }
+                    />
+                  )}
+                />
+                </Form.Group>
 
-            </Form.Row>
-          </Form>
-        )}
-      </Formik>
+                <Form.Group as={Col} md="6" controlId="validationFormik01">
+                  <Form.Label>Seleciona a turma: </Form.Label>
+                  <Select
+                    placeholder="Selecione uma ou mais turma."
+                    id="classes"
+                    name="classes"
+                    options={options}
+                    isMulti={true}
+                    onChange={(option) => setFieldValue('classes', option)}
+                    onBlur={handleBlur}
+                    value={values.classes}
+                  />
+                </Form.Group>
+
+                <Button type="submit">Enviar Cadastro</Button>
+
+              </Form.Row>
+            </Form>
+          )}
+        </Formik>
+      </div>
     )
   }
 

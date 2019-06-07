@@ -6,6 +6,7 @@ import CreateStudent from './views/CreateStudent/CreateStudent';
 import StudentsTable from './components/StudentsTable/StudentsTable';
 import NavbarApex from "./views/NavbarApex/NavbarApex";
 import NotFound from "./views/NotFound/NotFound";
+import ClassTable from './components/ClassTable/ClassTable'
 
 const Routes = () => (
   <div>
@@ -13,6 +14,7 @@ const Routes = () => (
       <NavbarApex />
       <Switch>
         <Route path="/" exact={true} component={App} />
+        <Route path="/class" exact={true} component={ClassTable} />
         <Route path="/student" exact={true} component={App} />
         <Route path="/student/create" component={CreateStudent} />
         <Route path="*" component={NotFound} />

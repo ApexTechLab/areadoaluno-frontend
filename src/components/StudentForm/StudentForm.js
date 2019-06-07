@@ -5,6 +5,7 @@ import { Form, Col, InputGroup, Button } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import MaskedInput from 'react-text-mask';
 import Select from 'react-select';
+import MaskedTextInput from "react-text-mask";
 
 class StudentForm extends Component {
   constructor(props) {
@@ -64,6 +65,7 @@ class StudentForm extends Component {
                 <Form.Control
                   type="text"
                   name="name"
+                  autoFocus={true}
                   value={values.name}
                   onChange={handleChange}
                   isInvalid={touched.name && errors.name}
@@ -110,10 +112,10 @@ class StudentForm extends Component {
                     type="text"
                     onChange={handleChange}
                     value={values.phone}
-                    onBlur={handleBlur}
+                      onBlur={handleBlur}
                     className={
                       errors.phone && touched.phone
-                        ? "text-input form-control error"
+                        ? "text-input form-control is-invalid error"
                       : "text-input form-control"
                     }
                   />
@@ -151,7 +153,7 @@ class StudentForm extends Component {
                     onBlur={handleBlur}
                     className={
                       errors.cpf && touched.cpf
-                        ? "text-input form-control error"
+                        ? "text-input form-control is-invalid error"
                       : "text-input form-control"
                     }
                   />
@@ -159,20 +161,30 @@ class StudentForm extends Component {
               />
               </Form.Group>
 
-              <Form.Group as={Col} md="2" controlId="validationFormik01">
-                <Form.Label>Data de Nascimento:</Form.Label><br />
-                  <DatePicker
-                    selected={values.birthDate}
-                    className={"text-input form-control"}
-                    onChange={(e) => {
-                      setFieldValue ('birthDate', e);
-                        setFieldTouched('birthDate');
-                      }}
-                    isInvalid={touched.birthDate && errors.birthDate}
+              <Form.Group as={Col} md="6" controlId="validationFormik01">
+                <Form.Label>Data de Nascimento:</Form.Label>
+                <Field
+                name="birthDate"
+                render={({ field }) => (
+                  <MaskedTextInput
+                    {...field}
+                    mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
+                    id="birthDate"
+                    type="text"
+                    value={values.birthDate}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={
+                      errors.birthDate && touched.birthDate
+                        ? "text-input form-control is-invalid error"
+                      : "text-input form-control"
+                    }
                   />
+                )}
+              />
               </Form.Group>
 
-              <Form.Group as={Col} md="10" controlId="validationFormik01">
+              <Form.Group as={Col} md="6" controlId="validationFormik01">
                 <Form.Label>Seleciona a turma: </Form.Label>
                 <Select
                   id="classes"
@@ -182,7 +194,11 @@ class StudentForm extends Component {
                   onChange={(option) => setFieldValue('classes', option)}
                   onBlur={handleBlur}
                   value={values.classes}
-                  isInvalid={touched.classes && errors.classes}
+                  className={
+                    errors.classes && touched.classes
+                      ? "is-invalid error"
+                    : ""
+                  }
                 />
               </Form.Group>
 
@@ -198,3 +214,27 @@ class StudentForm extends Component {
 }
 
 export default StudentForm;
+
+// <Form.Group as={Col} md="2" controlId="validationFormik01">
+//<Form.La/bel>Data de Nascimento:</Form.Label><br />
+//<DatePicker 
+//  selected={values.birthDate}
+//  className={"text-input form-control"}
+//  className={
+//    errors.birthDate && touched.birthDate
+//      ? "text-input form-control is-invalid error"
+//    : "text-input form-control"
+//  }
+//  customInput={
+//    <MaskedTextInput
+//      type="text"
+//      mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
+//    />
+//  }
+//  onChange={(e) => {
+//    setFieldValue ('birthDate', e);
+//      setFieldTouched('birthDate');
+//    }}
+//  isInvalid={touched.birthDate && errors.birthDate}
+///>
+//</Form.Group>

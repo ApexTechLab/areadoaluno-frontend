@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <StudentForm />
+      <h1>Home</h1>
     );
   }
 }

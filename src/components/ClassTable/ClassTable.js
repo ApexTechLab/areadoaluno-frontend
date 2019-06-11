@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import StudentsTable from '../StudentsTable/StudentsTable';
+import { Container } from 'react-bootstrap';
 
 const calssObj = [{
     id: 1,
@@ -105,8 +106,9 @@ class ClassTable extends Component {
                     <th>{clazz.code}</th>
                     <th>{new_starDate}</th>
                     <th>{new_endDate}</th>
+                    <th>{clazz.teacherName}</th>
                     <th>
-                    <button type="button" className="btn" onClick={this.handleShow.bind(this, clazz.id)} >Alunos {clazz.id}</button>
+                    <button type="button" className="btn" onClick={this.handleShow.bind(this, clazz.id)} >Lista de Alunos </button>
                     </th>
                 </tr>
             )
@@ -121,6 +123,7 @@ class ClassTable extends Component {
                             <th scope="col">Codigo</th>
                             <th scope="col">Data Inicial</th>
                             <th scope="col">Data Final</th>
+                            <th scope="col">Professor</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -9,10 +9,14 @@ class CreateStudent extends Component {
         super(props);
     }
 
+    sendStudent(student) {
+        alert(`Alerta disparado do componente pai ${JSON.stringify(student)}`)
+    }
+
     render() {
         return (
             <Container>
-                <StudentForm />
+                <StudentForm onSubmit={this.sendStudent.bind(this)}/>
             </Container>
         )
     }

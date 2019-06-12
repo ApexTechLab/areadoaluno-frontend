@@ -8,10 +8,14 @@ class CreateClass extends Component {
     super(props);
   }
 
+  sendClass(classe){
+    alert(`O aleerta foi desparado pelo pai: ${JSON.stringify(classe)}`);
+  }
+
   render() {
     return (
       <Container>
-        <ClassForm />
+        <ClassForm onSubmit={this.sendClass.bind(this)}/>
       </Container>
     )
   }

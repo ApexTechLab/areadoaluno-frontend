@@ -13,7 +13,7 @@ class ClassForm extends Component {
 
   alerta(obj) {
     console.log(obj);
-    window.alert(JSON.stringify(obj));
+    this.props.onSubmit(obj);
   }
 
   render() {

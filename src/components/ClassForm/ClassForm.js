@@ -5,7 +5,6 @@ import { Form, Col, InputGroup, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import pt from 'date-fns/locale/pt';
 
-
 class ClassForm extends Component {
 
   constructor(props) {
@@ -23,7 +22,7 @@ class ClassForm extends Component {
       code: yup.string().required(),
       startDate: yup.date().required(),
       endDate: yup.date().required(),
-      teacherName: yup.string().required(),
+      teacherName: yup.string(),
       
     });
     
@@ -116,10 +115,10 @@ class ClassForm extends Component {
                   name="teacherName"
                   value={values.teacherName}
                   onChange={handleChange}
-                  isInvalid={touched.teacherName && errors.teacherName}
+                  
                 />
               </Form.Group>
-              <Button type="submit">Submit form</Button>
+              <Button type="submit">Enviar</Button>
             </Form.Row>
           </Form>
         )}

@@ -3,10 +3,11 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import App from './components/App/App';
 import CreateStudent from './views/CreateStudent/CreateStudent';
-import StudentsTable from './components/StudentsTable/StudentsTable';
 import NavbarApex from "./views/NavbarApex/NavbarApex";
 import NotFound from "./views/NotFound/NotFound";
 import ClassTable from './components/ClassTable/ClassTable'
+
+import CreateClass from "./views/CreateClass/CreateClass";
 
 const Routes = () => (
   <div>
@@ -17,6 +18,7 @@ const Routes = () => (
         <Route path="/class" exact={true} component={ClassTable} />
         <Route path="/student" exact={true} component={App} />
         <Route path="/student/create" component={CreateStudent} />
+        <Route path="/class/create" component={CreateClass} />
         <Route path="*" component={NotFound} />
       </Switch>
     </BrowserRouter>

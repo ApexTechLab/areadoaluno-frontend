@@ -6,7 +6,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
 import { NavItem } from 'react-bootstrap';
-
 class NavbarApex extends Component {
 
     constructor(props) {

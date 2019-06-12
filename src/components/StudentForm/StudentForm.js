@@ -10,10 +10,13 @@ class StudentForm extends Component {
     super(props)
   }
 
-  alerta(objeto, { resetForm, initialValues }) {
+  alerta(objeto, { resetForm, initialValues }) {    
     console.log(objeto);
-    window.alert(JSON.stringify(objeto));
+    this.props.onSubmit(objeto);
     resetForm(initialValues);
+
+    //focus e telefonemask
+    document.querySelector('#name').focus();
   }
 
   render() {
@@ -58,12 +61,13 @@ class StudentForm extends Component {
             setFieldValue,
             setFieldTouched
           }) => (
-            <Form name="form" noValidate onSubmit={handleSubmit}>
+            <Form name="form" noValidate onSubmit={handleSubmit} id="formform">
               <Form.Row>
-                <Form.Group as={Col} md="6" controlId="validationFormik01" >
+                <Form.Group as={Col} md="6" controlId="validationFormik01">
                   <Form.Label>Nome Completo:</Form.Label>
                   <Field
                     type="text"
+                    id="name"
                     name="name"
                     placeholder="Coloque o nome completo."
                     autoFocus={true}
@@ -71,7 +75,7 @@ class StudentForm extends Component {
                     onChange={handleChange}
                     isInvalid={touched.name && errors.name}
                     className={
-                      errors.name && touched.name
+                      touched.name && errors.name
                         ? "text-input form-control is-invalid error"
                       : "text-input form-control"
                     }
@@ -108,7 +112,7 @@ class StudentForm extends Component {
                     onBlur={handleBlur}
                     isInvalid={touched.phone && errors.phone}
                     maskChar=""
-                    mask = "(99) 9 9999-9999"
+                    mask="(99) 9 9999-9999"
                     className={
                       errors.phone && touched.phone
                         ? "text-input form-control is-invalid error"

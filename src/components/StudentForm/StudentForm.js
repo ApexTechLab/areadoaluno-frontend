@@ -14,9 +14,6 @@ class StudentForm extends Component {
     console.log(objeto);
     this.props.onSubmit(objeto);
     resetForm(initialValues);
-
-    //focus e telefonemask
-    document.querySelector('#name').focus();
   }
 
   render() {
@@ -70,7 +67,6 @@ class StudentForm extends Component {
                     id="name"
                     name="name"
                     placeholder="Coloque o nome completo."
-                    autoFocus={true}
                     value={values.name}
                     onChange={handleChange}
                     isInvalid={touched.name && errors.name}

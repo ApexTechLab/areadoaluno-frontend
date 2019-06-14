@@ -136,6 +136,7 @@ class ClassTable extends Component {
           </Modal.Header>
           <Modal.Body>
               <StudentsTable students={calssObj[this.state.studentSelected].students} />
+              <Button type="submit">Apagar</Button>
             </Modal.Body>
         </Modal>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import ClassForm from '../../components/ClassForm/ClassForm';
+import api from '../../services/api';
 
 class CreateClass extends Component {
 
@@ -8,8 +9,14 @@ class CreateClass extends Component {
     super(props);
   }
 
-  sendClass(classe){
-    alert(`O aleerta foi desparado pelo pai: ${JSON.stringify(classe)}`);
+  sendClass = async (classe) => {
+    try {
+      await api.post('/class', classe);
+      alert('Turma cadastrada com sucesso!')
+    } catch(err) {
+      console.error(err);
+      alert('Aconteceu um erro: ' + JSON.stringify(err));
+    }
   }
 
   render() {

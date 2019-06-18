@@ -3,64 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import StudentsTable from '../StudentsTable/StudentsTable';
 import { Container } from 'react-bootstrap';
 
-const calssObj = [{
-    id: 1,
-    name: 'Formação Frontend Terças/Quintas',
-    code: 'FRONTEND1',
-    startDate: '1326028144',
-    endDate: '1559088058',
-    teacherName: 'Theo Victor Schlegel',
-    students: []
-},
-{
-    id: 2,
-    name: 'Formação Backend',
-    code: 'FRONTEND2',
-    startDate: '1326028144',
-    endDate: '1559088058',
-    teacherName: 'Batman',
-    students: [
-    {
-        id: 2,
-        name: 'Roni',
-        cpf: '09878890283',
-        birthDate: '1559088058',
-        phone: '47999087621',
-        email: 'joao_hotequil@gmail.com',
-        classes: [2]
-    },
-    {
-        id: 3,
-        name: 'Amorim',
-        cpf: '09878890283',
-        birthDate: '1559088058',
-        phone: '47999087621',
-        email: 'joao_hotequil@gmail.com',
-        classes: [3,2]
-    }
-    ]
-},
-{
-    id: 3,
-    name: 'Formação de quadrilha',
-    code: 'FRONTEND3',
-    startDate: '1326028144',
-    endDate: '1559088058',
-    teacherName: 'Coringa',
-    students: [{
-        id: 3,
-        name: 'Amorim',
-        cpf: '09878890283',
-        birthDate: '1559088058',
-        phone: '47999087621',
-        email: 'joao_hotequil@gmail.com',
-        classes: [3]
-    }]
-}
-]
-
 class ClassTable extends Component {
-
     constructor(props, context) {
         super(props, context);
     
@@ -83,32 +26,29 @@ class ClassTable extends Component {
                     studentSelected: clazz -1 });    
     }
 
-
-
     render() {
-        const tableRows = calssObj.map(clazz => {
-            const new_starDate =   new Intl.DateTimeFormat('en-GB', { 
+        const tableRows = this.props.classes.map(clazz => {
+            const new_starDate = new Intl.DateTimeFormat('en-GB', { 
                 year: 'numeric', 
                 month: '2-digit', 
                 day: '2-digit' 
             }).format(clazz.startDate);
 
-            const new_endDate =   new Intl.DateTimeFormat('en-GB', { 
+            const new_endDate = new Intl.DateTimeFormat('en-GB', { 
                 year: 'numeric', 
                 month: '2-digit', 
                 day: '2-digit' 
-            }).format(clazz.endtDate);
+            }).format(clazz.endDate);
 
-            
             return (
                 <tr key={clazz.id}>
                     <th>{clazz.name}</th>
                     <th>{clazz.code}</th>
-                    <th>{new_starDate}</th>
-                    <th>{new_endDate}</th>
+                    <th>{clazz.new_starDate}</th>
+                    <th>{clazz.new_endDate}</th>
                     <th>{clazz.teacherName}</th>
                     <th>
-                    <button type="button" className="btn" onClick={this.handleShow.bind(this, clazz.id)} >Lista de Alunos </button>
+                        <button type="button" className="btn" onClick={this.handleShow.bind(this, clazz.id)} >Lista de Alunos </button>
                     </th>
                 </tr>
             )
@@ -116,7 +56,7 @@ class ClassTable extends Component {
        
         return (
             <div>
-                <table className="table " border='1'>
+                <table className="table" border='1'>
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>
@@ -135,7 +75,8 @@ class ClassTable extends Component {
             <Modal.Title>Lista de Alunos</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <StudentsTable students={calssObj[this.state.studentSelected].students} />
+              <StudentsTable students={this.props.classes[this.state.studentSelected].students} />
+              <Button type="submit">Apagar</Button>
             </Modal.Body>
         </Modal>
 

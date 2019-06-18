@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://localhost:9090/api"
+    baseURL: "https://areadoaluno-backend.herokuapp.com/api"
 })
 
 export default api;

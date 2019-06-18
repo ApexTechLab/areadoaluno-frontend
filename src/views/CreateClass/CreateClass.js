@@ -9,7 +9,7 @@ class CreateClass extends Component {
   }
 
   sendClass(classe){
-    alert(`O aleerta foi desparado pelo pai: ${JSON.stringify(classe)}`);
+    alert(`O alerta foi desparado pelo pai: ${JSON.stringify(classe)}`);
   }
 
   render() {

@@ -5,8 +5,8 @@ import App from './components/App/App';
 import CreateStudent from './views/CreateStudent/CreateStudent';
 import NavbarApex from "./views/NavbarApex/NavbarApex";
 import NotFound from "./views/NotFound/NotFound";
-import ClassTable from './components/ClassTable/ClassTable'
-
+import ClassTable from './components/ClassTable/ClassTable';
+import ListStudent from './views/ListStudent/ListStudent';
 import CreateClass from "./views/CreateClass/CreateClass";
 
 const Routes = () => (
@@ -17,6 +17,7 @@ const Routes = () => (
         <Route path="/" exact={true} component={App} />
         <Route path="/class" exact={true} component={ClassTable} />
         <Route path="/student" exact={true} component={App} />
+        <Route path="/student/list" component={ListStudent} />
         <Route path="/student/create" component={CreateStudent} />
         <Route path="/class/create" component={CreateClass} />
         <Route path="*" component={NotFound} />

@@ -75,7 +75,7 @@ class ClassTable extends Component {
             <Modal.Title>Lista de Alunos</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <StudentsTable students={this.props.classes[this.state.studentSelected].students} />
+              <StudentsTable students={this.props.classes.length ? this.props.classes[this.state.studentSelected].students : []} />
               <Button type="submit">Apagar</Button>
             </Modal.Body>
         </Modal>

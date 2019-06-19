@@ -28,7 +28,7 @@ class NavbarApex extends Component {
                 </LinkContainer>
               </NavDropdown>
               <NavDropdown title="Alunos" id="collasible-nav-dropdown">
-                <LinkContainer to="/student">
+                <LinkContainer to="/student/list">
                   <NavItem>Listar</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/student/create">

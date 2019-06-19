@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 
 import StudentForm from '../../components/StudentForm/StudentForm';
+import api from '../../services/api';
 
 class CreateStudent extends Component {
 
@@ -9,8 +10,16 @@ class CreateStudent extends Component {
         super(props);
     }
 
-    sendStudent(student) {
-        alert(`Alerta disparado do componente pai ${JSON.stringify(student)}`)
+    sendStudent = async (student) => {
+        //alert(`Alerta disparado do componente pai ${JSON.stringify(student)}`);
+
+        try {
+            await api.post('/student', student);
+            alert(`Estudante cadastrado com sucessor`);
+        } catch(err) {
+            console.error(err);
+            alert(`Ocorreu um erro ${JSON.stringify(err)}`);
+        }
     }
 
     render() {

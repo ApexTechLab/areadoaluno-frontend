@@ -69,14 +69,13 @@ class StudentForm extends Component {
                     placeholder="Coloque o nome completo."
                     value={values.name}
                     onChange={handleChange}
-                    isInvalid={touched.name && errors.name}
                     className={
                       touched.name && errors.name
                         ? "text-input form-control is-invalid error"
                       : "text-input form-control"
                     }
                   />
-                  <span class="card-text text-small"><small class="text-muted">Campo obrigatório.</small></span>
+                  <span className="card-text text-small"><small className="text-muted">Campo obrigatório.</small></span>
                 </Form.Group>
 
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
@@ -87,14 +86,13 @@ class StudentForm extends Component {
                     placeholder="Coloque o e-mail."
                     value={values.email}
                     onChange={handleChange}
-                    isInvalid={touched.email && errors.email}
                     className={
                       errors.email && touched.email
                         ? "text-input form-control is-invalid error"
                       : "text-input form-control"
                     }
                   />
-                  <span class="card-text text-small"><small class="text-muted">Campo obrigatório.</small></span>
+                  <span className="card-text text-small"><small className="text-muted">Campo obrigatório.</small></span>
                 </Form.Group>
 
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
@@ -106,7 +104,6 @@ class StudentForm extends Component {
                     placeholder="Coloque o telefone móvel"
                     value={values.phone}
                     onBlur={handleBlur}
-                    isInvalid={touched.phone && errors.phone}
                     maskChar=""
                     mask="(99) 9 9999-9999"
                     className={
@@ -114,7 +111,7 @@ class StudentForm extends Component {
                         ? "text-input form-control is-invalid error"
                       : "text-input form-control"
                     }/>
-                  <span class="card-text text-small"><small class="text-muted">Campo obrigatório.</small></span>
+                  <span className="card-text text-small"><small className="text-muted">Campo obrigatório.</small></span>
                 </Form.Group>
               
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
@@ -126,7 +123,6 @@ class StudentForm extends Component {
                     placeholder="Coloque o CPF."
                     value={values.cpf}
                     onBlur={handleBlur}
-                    isInvalid={touched.cpf && errors.cpf}
                     maskChar=""
                     mask = "999.999.999-99"
                     className={
@@ -134,7 +130,7 @@ class StudentForm extends Component {
                         ? "text-input form-control is-invalid error"
                       : "text-input form-control"
                     }/>
-                  <span class="card-text text-small"><small class="text-muted">Campo obrigatório.</small></span>
+                  <span className="card-text text-small"><small className="text-muted">Campo obrigatório.</small></span>
                 </Form.Group>
 
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
@@ -147,7 +143,6 @@ class StudentForm extends Component {
                     placeholder="Coloque a data de nascimento."
                     value={values.birthDate}
                     onBlur={handleBlur}
-                    isInvalid={touched.birthDate && errors.birthDate}
                     maskChar=""
                     mask = "99/99/9999"
                     className={
@@ -155,11 +150,11 @@ class StudentForm extends Component {
                         ? "text-input form-control is-invalid error"
                       : "text-input form-control"
                     }/>
-                  <span class="card-text text-small"><small class="text-muted">Campo obrigatório.</small></span>
+                  <span className="card-text text-small"><small className="text-muted">Campo obrigatório.</small></span>
                 </Form.Group>
 
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
-                  <Form.Label>Seleciona a turma: </Form.Label>
+                  <Form.Label>Turma(s): </Form.Label>
                   <Select
                     placeholder="Selecione uma ou mais turma."
                     id="classes"
@@ -170,7 +165,7 @@ class StudentForm extends Component {
                     onBlur={handleBlur}
                     value={values.classes}
                   />
-                  <span class="card-text text-small"><small class="text-muted">Campo não obrigatório.</small></span>
+                  <span className="card-text text-small"><small className="text-muted">Campo não obrigatório.</small></span>
                 </Form.Group>
 
                 <Button type="submit">Enviar Cadastro</Button>
